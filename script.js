@@ -1,38 +1,25 @@
-//complete this code
-class Person {
-	constructor(name,age)
-	{
-			this._name = name;
-			this._age = age;
-	}
-	get name(){
-		return this._name;
-	}
-	set name(name){
-		this._name = name;
-	}
-	get age(){
-		return this._age;
-	}
-	set age(age)
-	{
-		this._age = age;
-	}
+// Complete the js code
+function Car(make, model) {
+    this.make = make;
+    this.model = model;
 }
 
-class Student extends Person {
-	study(){
-		console.log(`${this.name} is studying`)
-	}
+Car.prototype.getMakeModel = function() {
+    return this.make + " " + this.model;
 }
 
-class Teacher extends Person {
-	teach(){
-		console.log(`${this.name} is teaching`)
-	}
+function SportsCar(make, model, topSpeed) {
+    Car.call(this, make, model);
+    this.topSpeed = topSpeed;
 }
 
-// Do not change the code below this line
-window.Person = Person;
-window.Student = Student;
-window.Teacher = Teacher;
+SportsCar.prototype = Object.create(Car.prototype);
+SportsCar.prototype.constructor = SportsCar;
+
+SportsCar.prototype.getTopSpeed = function() {
+    return this.topSpeed;
+}
+
+// Do not change the code below
+window.Car = Car;
+window.SportsCar = SportsCar;
